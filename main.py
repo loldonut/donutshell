@@ -22,7 +22,7 @@ async def shell(history=[]) -> None:
     while True:
         try:
             text = input(prompt) 
-        except EOFError or KeyboardInterrupt:
+        except KeyboardInterrupt:
             sys.exit(0)
 
         if text.strip() == "":
