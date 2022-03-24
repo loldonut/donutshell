@@ -15,6 +15,8 @@
 
 `ls [path]` - Prints the list of files in `path` if not print the current working directory
 
+`clear` - Clear the Console
+
 ## Config
 
 You can change the configuration in `config.json`

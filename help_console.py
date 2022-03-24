@@ -12,6 +12,10 @@ async def help_shell():
         {
             'name': 'ls',
             'description': 'Prints the path you have givem if not then print the current working directory'
+        },
+        {
+            'name': 'clear',
+            'description': 'Clears the Console'
         }
     ]
 
