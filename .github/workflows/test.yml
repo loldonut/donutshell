@@ -5,13 +5,12 @@ on:
   - pull_request
 
 jobs:
-  mypytest:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ['3.8', '3.x']
 
-    name: mypy type checks
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
