@@ -7,6 +7,9 @@ from help_console import help_shell
 builtin_modules_names = ['help', 'echo', 'test']
 
 async def shell(history=[]) -> None:
+    """
+    the DonutScript shell.
+    """
     while True:
         try:
             cwd = os.getcwd().split('/')
@@ -27,10 +30,14 @@ async def shell(history=[]) -> None:
         if text == 'history':
             res = ''
             for i, v in enumerate(history):
+                # only add a new line
+                # if the loop is not at the last one.
                 res += v + ('\n' if i != (len(history) - 1) else '')
             print(res)
             await shell()
 
+        # get the function for that
+        # command if any, for built in modules
         if text.split(' ')[0] in builtin_modules_names:
             x = getattr(builtin_modules, text.split(' ')[0])
             x(text)
@@ -39,6 +46,9 @@ async def shell(history=[]) -> None:
             sys.exit(0)
 
 def clear_console():
+    """
+    Clears the console before starting the shell.
+    """
     if os.name in ('nt', 'dos'):
         os.system('cls')
     elif sys.platform == 'linux':
