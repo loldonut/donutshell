@@ -1,6 +1,8 @@
 import asyncio
 import sys
 import os
+import json
+
 import builtin_modules
 from help_console import help_shell
 
@@ -10,10 +12,25 @@ async def shell(history=[]) -> None:
     """
     the DonutScript shell.
     """
+    prompt = ''
+    with open('./config.json') as r:
+        res = json.loads(r.read())
+
+        if res['prompt'] == None:
+            prompt = '{cwd} → '
+        else:
+            prompt = res['prompt']
+
+        r.close()
+
+    cwd_split = os.getcwd().split('/')
+    cwd = cwd_split[len(cwd_split) - 1]
+
+    prompt = prompt.replace('{cwd}', cwd)
+
     while True:
         try:
-            cwd = os.getcwd().split('/')
-            text = input(f'{cwd[len(cwd) - 1]} >>> ')
+            text = input(prompt) 
         except EOFError or KeyboardInterrupt:
             sys.exit(0)
 
@@ -33,6 +50,7 @@ async def shell(history=[]) -> None:
                 # only add a new line
                 # if the loop is not at the last one.
                 res += v + ('\n' if i != (len(history) - 1) else '')
+
             print(res)
             await shell()
 
@@ -45,7 +63,7 @@ async def shell(history=[]) -> None:
         if text == '.exit':
             sys.exit(0)
 
-def clear_console():
+def clear_console() -> None:
     """
     Clears the console before starting the shell.
     """

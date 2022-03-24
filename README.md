@@ -17,3 +17,27 @@ python main.py
 # or
 py main.py
 ```
+
+## Config
+
+You can change the configuration in `config.json`
+
+Config Example:
+
+```json
+{
+    "prompt": "{cwd} -> "
+}
+```
+
+_Make sure to add a space at the end._
+
+The Shell looks for the `prompt` value in the config and sets that as the input message.
+
+If there is no `prompt` value the default is
+
+`{cwd} → `
+
+### Values for Config
+
+`{cwd}` - The Current Working Directory
