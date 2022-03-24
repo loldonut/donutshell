@@ -1,6 +1,7 @@
 import asyncio
 import sys
 import os
+import atexit
 
 import builtin_modules
 from help_console import help_shell
@@ -64,6 +65,12 @@ def clear_console() -> None:
         os.system('clear')
 
 __version__ = '0.0.1'
+
+# Print a tab for it
+# to not exit right at
+# the input message
+proper_exit = lambda: print('\t')
+atexit.register(proper_exit)
 
 def main():
     try:

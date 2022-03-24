@@ -44,7 +44,7 @@ All of the possible Config value
 
 `"prompt": "value"` - (str) The input message
 
-`"displayWelcomeMessage": true | false` - (bool) If it should display the 'DonutScript' welcome message.
+`"displayWelcomeMessage": true | false` - (bool) If it should display the 'DonutScript' welcome message. (`true` by default)
 
 ### Values for Config
 
