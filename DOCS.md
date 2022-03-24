@@ -13,6 +13,8 @@
 
 `history` - Shows the history of the commands you have ran
 
+`ls [path]` - Prints the list of files in `path` if not print the current working directory
+
 ## Config
 
 You can change the configuration in `config.json`

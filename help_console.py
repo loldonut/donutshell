@@ -7,7 +7,11 @@ async def help_shell():
         },
         {
             'name': 'echo',
-            'description': 'Prints things.'
+            'description': 'Prints things...'
+        },
+        {
+            'name': 'ls',
+            'description': 'Prints the path you have givem if not then print the current working directory'
         }
     ]
 
