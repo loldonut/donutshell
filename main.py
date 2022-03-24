@@ -7,7 +7,7 @@ import builtin_modules
 from help_console import help_shell
 from read_config import read_config
 
-builtin_modules_names = ['help', 'echo', 'ls']
+builtin_modules_names = ['help', 'echo', 'ls', 'clear']
 
 prompt_res, should_welcome = read_config()
 
