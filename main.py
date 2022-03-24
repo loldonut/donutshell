@@ -1,32 +1,23 @@
 import asyncio
 import sys
 import os
-import json
 
 import builtin_modules
 from help_console import help_shell
+from read_config import read_config
 
 builtin_modules_names = ['help', 'echo', 'test']
+
+prompt_res, should_welcome = read_config()
 
 async def shell(history=[]) -> None:
     """
     the DonutScript shell.
     """
-    prompt = ''
-    with open('./config.json') as r:
-        res = json.loads(r.read())
-
-        if res['prompt'] == None:
-            prompt = '{cwd} → '
-        else:
-            prompt = res['prompt']
-
-        r.close()
-
     cwd_split = os.getcwd().split('/')
     cwd = cwd_split[len(cwd_split) - 1]
 
-    prompt = prompt.replace('{cwd}', cwd)
+    prompt = prompt_res.replace('{cwd}', cwd)
 
     while True:
         try:
@@ -77,7 +68,9 @@ __version__ = '0.0.1'
 def main():
     try:
         clear_console()
-        print(f'DonutShell v{__version__}')
+        if should_welcome == True:
+            print(f'DonutShell v{__version__}')
+
         asyncio.run(shell())
     except EOFError or KeyboardInterrupt:
         sys.exit(0)

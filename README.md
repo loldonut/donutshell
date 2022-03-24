@@ -38,6 +38,14 @@ If there is no `prompt` value the default is
 
 `{cwd} → `
 
+### Config File
+
+All of the possible Config value
+
+`"prompt": "value"` - (str) The input message
+
+`"displayWelcomeMessage": true | false` - (bool) If it should display the 'DonutScript' welcome message.
+
 ### Values for Config
 
 `{cwd}` - The Current Working Directory
