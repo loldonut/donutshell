@@ -1,6 +1,6 @@
 name: Test
 
-om:
+on:
   - push
   - pull_request
 
