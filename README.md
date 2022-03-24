@@ -9,7 +9,7 @@ and run `python main.py` (or `py main.py`)
 
 Example:
 
-```sh
+```sh-session
 git clone https://github.com/loldonut/donutshell
 cd donutshell
 
