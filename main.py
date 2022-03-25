@@ -44,7 +44,7 @@ async def shell(history=[]) -> None:
         cmdName = text.split(' ')[0]
 
         if cmdName not in all_builtin_module_names:
-            command_not_found(text)
+            command_not_found(text, all_builtin_module_names)
             await shell()
 
         if text == 'help':
