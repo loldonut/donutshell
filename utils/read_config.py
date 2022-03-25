@@ -19,6 +19,4 @@ def read_config() -> Tuple[str, bool]:
         except KeyError:
             should_welcome = True
 
-        r.close()
-
     return prompt, should_welcome
