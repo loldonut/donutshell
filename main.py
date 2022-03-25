@@ -4,9 +4,11 @@ import os
 import atexit
 
 import builtin_modules
-from help_console import help_shell
-from read_config import read_config
-from command_not_found import command_not_found
+from utils import (
+    command_not_found,
+    read_config,
+    help_shell,
+)
 
 # Built-in Modules that the Built-in modules can handle
 # TODO: Combine these two Variable
