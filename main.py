@@ -6,8 +6,18 @@ import atexit
 import builtin_modules
 from help_console import help_shell
 from read_config import read_config
+from command_not_found import command_not_found
 
+# Built-in Modules that the Built-in modules can handle
+# TODO: Combine these two Variable
 builtin_modules_names = ['help', 'echo', 'ls', 'clear']
+# For all the built-in modules
+# to detect if a valid command has been entered
+all_builtin_module_names = ['help', 'history']
+
+for filename in os.listdir('./builtin_modules'):
+    if filename.endswith('.py') and not filename.startswith('__init__'):
+        all_builtin_module_names.append(f'{filename[:-3]}')
 
 prompt_res, should_welcome = read_config()
 
@@ -30,6 +40,12 @@ async def shell(history=[]) -> None:
             await shell()
         else:
             history.append(text)
+
+        cmdName = text.split(' ')[0]
+
+        if cmdName not in all_builtin_module_names:
+            command_not_found(text)
+            await shell()
 
         if text == 'help':
             help_res = await help_shell()
