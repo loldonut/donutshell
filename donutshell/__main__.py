@@ -1,10 +1,13 @@
+#!/usr/bin/env python
+
 import asyncio
 import sys
 import os
 import atexit
+import argparse
 
-import builtin_modules
-from utils import (
+from . import builtin_modules
+from .utils import (
     command_not_found,
     read_config,
     help_shell,
@@ -15,13 +18,30 @@ from utils import (
 builtin_modules_names = ['help', 'echo', 'ls', 'clear']
 # For all the built-in modules
 # to detect if a valid command has been entered
-all_builtin_module_names = ['help', 'history']
+all_builtin_module_names = [
+    'help', 
+    'history',
+    'clear',
+    'echo',
+    'ls',
+]
 
-for filename in os.listdir('./builtin_modules'):
-    if filename.endswith('.py') and not filename.startswith('__init__'):
-        all_builtin_module_names.append(f'{filename[:-3]}')
+parser = argparse.ArgumentParser(
+            prog='donutshell',
+            description='A Shell built in Python',
+            allow_abbrev=False
+        )
 
-prompt_res, should_welcome = read_config()
+parser.add_argument('--config', 
+                  type=str, 
+                  help='(Optional) Custom Configuration JSON file',
+                  action='store',
+            )
+
+args = parser.parse_args()
+file_path = args.config if args.config is not None else ''
+
+prompt_res, should_welcome = read_config(file_path)
 
 async def shell(history=[]) -> None:
     """
@@ -82,22 +102,22 @@ def clear_console() -> None:
     elif sys.platform == 'linux':
         os.system('clear')
 
-__version__ = '0.0.1'
+__version__ = '0.0.1rc3'
 
-# Print a tab for it
-# to not exit right at
-# the input message
-proper_exit = lambda: print('\t')
-atexit.register(proper_exit)
+def main():    
+    # Print a tab for it
+    # to not exit right at
+    # the input message
+    proper_exit = lambda: print('\t')
+    atexit.register(proper_exit)
 
-def main():
     try:
         clear_console()
         if should_welcome == True:
             print(f'DonutShell v{__version__}')
 
         asyncio.run(shell())
-    except EOFError or KeyboardInterrupt:
+    except (EOFError, KeyboardInterrupt):
         sys.exit(0)
 
 if __name__ == '__main__':

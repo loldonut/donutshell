@@ -2,20 +2,25 @@
 
 A Custom Shell I made in Python for fun, which means it sucks lmao
 
+_This package is not meant for daily use._
+
 ## Installation
-currently, the Only way to use this program is to clone this repo
 
-and run `python main.py` (or `py main.py`)
+**Using `PIP`:**
 
-Example:
+```
+pip install donutshell
+```
 
-```sh-session
+**By cloning the repo:**
+
+```sh
 git clone https://github.com/loldonut/donutshell
-cd donutshell
+cd donutshell/donutshell
 
-python main.py
+python .
 # or
-py main.py
+py .
 ```
 
 ## Docs

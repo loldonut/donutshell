@@ -18,6 +18,7 @@
 `clear` - Clear the Console
 
 ## Config
+_**Currently not available in PyPI version, you have to manually install DonutShell to use the config.**_
 
 You can change the configuration in `config.json`
 
