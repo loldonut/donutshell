@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.0.1rc3'
+version = '0.0.2rc1'
 description = 'A Shell built-in Python but not meant for daily use.'
 
 from pathlib import Path

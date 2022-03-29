@@ -15,7 +15,7 @@ from .utils import (
 
 # Built-in Modules that the Built-in modules can handle
 # TODO: Combine these two Variable
-builtin_modules_names = ['help', 'echo', 'ls', 'clear']
+builtin_modules_names = ['help', 'echo', 'ls', 'clear', 'cd']
 # For all the built-in modules
 # to detect if a valid command has been entered
 all_builtin_module_names = [
@@ -24,6 +24,7 @@ all_builtin_module_names = [
     'clear',
     'echo',
     'ls',
+    'cd',
 ]
 
 parser = argparse.ArgumentParser(
@@ -47,12 +48,11 @@ async def shell(history=[]) -> None:
     """
     the DonutScript shell.
     """
-    cwd_split = os.getcwd().split('/')
-    cwd = cwd_split[len(cwd_split) - 1]
-
-    prompt = prompt_res.replace('{cwd}', cwd)
-
     while True:
+        cwd_split = os.getcwd().split('/')
+        cwd = cwd_split[len(cwd_split) - 1]
+
+        prompt = prompt_res.replace('{cwd}', cwd)
         try:
             text = input(prompt) 
         except KeyboardInterrupt:
