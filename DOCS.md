@@ -28,7 +28,8 @@ Config Example:
 
 ```json
 {
-    "prompt": "{cwd} -> "
+    "prompt": "{cwd} -> ",
+    "displayWelcomeMessage": true
 }
 ```
 
