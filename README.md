@@ -6,13 +6,13 @@ _This package is not meant for daily use._
 
 ## Installation
 
-**Using `PIP`:**
+- Using `PIP`
 
 ```
 pip install donutshell
 ```
 
-**By cloning the repo:**
+- By cloning the repo
 
 ```sh
 git clone https://github.com/loldonut/donutshell
