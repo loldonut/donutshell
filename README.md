@@ -12,15 +12,15 @@ _This package is not meant for daily use._
 pip install donutshell
 ```
 
-- By cloning the repo
+- By cloning the repo (manual install)
 
 ```sh
 git clone https://github.com/loldonut/donutshell
-cd donutshell/donutshell
+cd donutshell
 
-python .
+python setup.py install
 # or
-py .
+py setup.py install
 ```
 
 ## Docs
